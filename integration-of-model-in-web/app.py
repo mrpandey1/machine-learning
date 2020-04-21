@@ -101,7 +101,7 @@ loaded_full_model=load_model('model/fullmodel.h5')
 @app.route('/', methods=['GET'])
 def index():
     # Main page
-    return render_template('index.html')
+    return render_template('./index.html')
 
 
 @app.route('/predict', methods=['GET', 'POST'])
@@ -113,7 +113,7 @@ def upload():
         basepath = os.path.dirname(__file__)
         file_path = os.path.join(
             basepath, 'uploads', secure_filename(f.filename))
-        f.save(file_path)
+        #f.save(file_path)
         # Make prediction
         result = model_predict(file_path,loaded_full_model)            
         return result[0]
